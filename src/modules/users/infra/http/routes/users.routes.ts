@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 import { Router } from 'express';
 import multer from 'multer';
-import ensureAuthenticated from '@shared/infra/http/middlewares/ensureAnthenticated';
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAnthenticated';
 import UploadConfig from '@config/upload';
 import UserAvatarController from '@modules/users/infra/http/controllers/UserAvatarController';
 import UsersController from '@modules/users/infra/http/controllers/UsersController';
