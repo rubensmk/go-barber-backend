@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for appointments/services/CreateAppointmentService.ts</title>
+    <title>Code coverage report for appointments/services/ListProviderDayAvailabityService.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">appointments/services</a> CreateAppointmentService.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">appointments/services</a> ListProviderDayAvailabityService.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>66/66</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>66/66</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -119,11 +119,7 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -139,122 +135,114 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable camelcase */
-import { startOfHour, isBefore, getHours } from 'date-fns';
-import { inject, injectable } from 'tsyringe';
-import AppError from '@shared/errors/AppError';
-import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
-import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentRepository';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { injectable, inject } from 'tsyringe';
+import { getHours } from 'date-fns';
+&nbsp;
+import IAppointmentsRepository from '../repositories/IAppointmentRepository';
 &nbsp;
 interface IRequest {
-    date: Date;
     provider_id: string;
-    user_id: string;
-&nbsp;
+    day: number;
+    month: number;
+    year: number;
 }
+&nbsp;
+type IResponse = Array&lt;{
+    hour: number;
+    available: boolean;
+}&gt;;
+&nbsp;
 @injectable()
-class CreateAppointmentService {
+class ListProviderDayAvailabilityService {
     constructor(
         @inject('AppointmentsRepository')
-        private appointmentsRepository: IAppointmentsRepository, // eslint-disable-next-line prettier/prettier
-    ) { }
+        private appointmentsRepository: IAppointmentsRepository,
+    ) { } // eslint-disable-line
 &nbsp;
     public async execute({
-        date,
         provider_id,
-        user_id,
-    }: IRequest): Promise&lt;Appointment&gt; {
-        const appointmentDate = startOfHour(date);
-&nbsp;
-        console.log(appointmentDate);
-        if (isBefore(appointmentDate, Date.now())) {
-            console.log(Date.now())
-            throw new AppError(
-                "You can't create an appointment on a past date.",
-            );
-        }
-&nbsp;
-        if (user_id === provider_id) {
-            throw new AppError(
-                "You can't create an appointment with yourself.",
-            );
-        }
-&nbsp;
-        if (getHours(appointmentDate) &lt; 8 || getHours(appointmentDate) &gt; 17) {
-            throw new AppError(
-                'You can only create appontments between 8am and 5pm.',
-            );
-        }
-&nbsp;
-        const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
-            appointmentDate,
+        year,
+        month,
+        day,
+    }: IRequest): Promise&lt;IResponse&gt; {
+        const appointments = await this.appointmentsRepository.findAllInDayFromProvider(
+            {
+                provider_id,
+                year,
+                month,
+                day,
+            },
         );
 &nbsp;
-        if (findAppointmentInSameDate) {
-            throw new AppError('This appointment is already booked!');
-        }
+        const hourStart = 8;
 &nbsp;
-        const appointment = await this.appointmentsRepository.create({
-            provider_id,
-            user_id,
-            date: appointmentDate,
+        const eachHourArray = Array.from(
+            { length: 10 },
+            (_, index) =&gt; index + hourStart,
+        );
+&nbsp;
+        const availability = eachHourArray.map(hour =&gt; {
+            const hasAppointmentInHour = appointments.find(
+                appointment =&gt; getHours(appointment.date) === hour,
+            );
+&nbsp;
+            return {
+                hour,
+                available: !hasAppointmentInHour,
+            };
         });
 &nbsp;
-        return appointment;
+        return availability;
     }
 }
 &nbsp;
-export default CreateAppointmentService;
+export default ListProviderDayAvailabilityService;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -262,7 +250,7 @@ export default CreateAppointmentService;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Jan 31 2021 10:53:41 GMT-0300 (hora estándar de Brasilia)
+                at Sat Jan 30 2021 17:39:08 GMT-0300 (hora estándar de Brasilia)
             </div>
         </div>
         <script src="../../prettify.js"></script>
