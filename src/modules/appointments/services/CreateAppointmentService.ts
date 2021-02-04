@@ -1,21 +1,25 @@
 /* eslint-disable camelcase */
-import { startOfHour, isBefore, getHours } from 'date-fns';
+import { startOfHour, isBefore, getHours, format } from 'date-fns';
 import { inject, injectable } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
+
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentRepository';
+import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
 
 interface IRequest {
     date: Date;
     provider_id: string;
     user_id: string;
-
 }
 @injectable()
 class CreateAppointmentService {
     constructor(
         @inject('AppointmentsRepository')
-        private appointmentsRepository: IAppointmentsRepository, // eslint-disable-next-line prettier/prettier
+        private appointmentsRepository: IAppointmentsRepository,
+
+        @inject('NotificationsRepository')
+        private notificationsRepository: INotificationsRepository, // eslint-disable-next-line prettier/prettier
     ) { }
 
     public async execute({
@@ -25,9 +29,7 @@ class CreateAppointmentService {
     }: IRequest): Promise<Appointment> {
         const appointmentDate = startOfHour(date);
 
-        console.log(appointmentDate);
         if (isBefore(appointmentDate, Date.now())) {
-            console.log(Date.now())
             throw new AppError(
                 "You can't create an appointment on a past date.",
             );
@@ -57,6 +59,16 @@ class CreateAppointmentService {
             provider_id,
             user_id,
             date: appointmentDate,
+        });
+
+        const dateFormatted = format(
+            appointment.date,
+            "dd/MM/yyyy 'às' HH:mm'h'",
+        );
+
+        await this.notificationsRepository.create({
+            recipient_id: provider_id,
+            content: `Novo agendamento para dia ${dateFormatted}`,
         });
 
         return appointment;
