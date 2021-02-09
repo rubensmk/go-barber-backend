@@ -18,9 +18,11 @@ interface IResponse {
 @injectable()
 class AuthenticateUserService {
     constructor(
-        @inject('UsersRepository') private usersRepository: IUsersRepository,
-        @inject('HashProvider') private hashProvider: IHashProvider,
-    ) { }// eslint-disable-line prettier/prettier
+        @inject('UsersRepository')
+        private usersRepository: IUsersRepository,
+        @inject('HashProvider')
+        private hashProvider: IHashProvider,
+    ) { }// eslint-disable-line
 
     public async execute({ email, password }: IRequest): Promise<IResponse> {
         const user = await this.usersRepository.findByEmail(email);
